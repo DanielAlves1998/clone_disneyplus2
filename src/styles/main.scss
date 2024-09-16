@@ -1,4 +1,19 @@
+// tudo tem que ser importado aqui porque essa é a scss principal
+@use 'variaveis';
 @use 'hero';
+
+// aqui é para impantar fontes
+@font-face {
+    font-family: avenir;
+    src: url(../../assets/fonts/Avenir-Regular.woff2); // aqui colocamos o caminho de onde essas fontes estão, nesse casonessas pastas
+    font-weigth: 400; 
+}
+
+@font-face {
+    font-family: avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2); // aqui colocamos o caminho de onde essas fontes estão, nesse casonessas pastas
+    font-weigth: 700; 
+}
 
 * {
     margin: 0;
@@ -6,23 +21,21 @@
     box-sizing: border-box;
 }
 
-$corDeFundo: #040714;
-$corTextoPrincipal: silver;
-$corTextoSecundario: #f9f9f9;
 
 body {
-    background-color: $corDeFundo;
+    background-color: variaveis.$corDeFundo;
+    font-family: avenir, sans-serif;
 }
 
 @mixin text($fontSize: 16px) {
     font-size: $fontSize;
     line-height: $fontSize + 10px;
-    color: $corTextoPrincipal;
+    color: variaveis.$corTextoPrincipal; // se coloca o noma da variavel primeiro quando tem mais de uma variavel
 }
 
 @mixin title($fontSize: 40px) {
     @include text($fontSize);
-    color: $corTextoSecundario;
+    color: variaveis.$corTextoSecundario;
 }
 
 .text--big {
@@ -39,7 +52,7 @@ body {
 
 .link-text {
     @include text(18px);
-    color: $corTextoSecundario;
+    color: variaveis.$corTextoSecundario;
 }
 
 .title--big {
