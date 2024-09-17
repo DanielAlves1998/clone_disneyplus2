@@ -1,0 +1,40 @@
+.plans {
+    padding: 5.6vw;
+
+    h2 {
+        text-align: center;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: space-around; // serve para distribuir as margens de uma forma padrão nos elementos
+        margin-top: 50px;
+        
+        &__item {
+            text-align: center; //alinah o tento
+            padding: 60px 44px 44px;
+            max-width: 380px;
+            width: 100%;
+// esse seletor está repetindo a imagem a baixo no segundo campo
+            &:nth-child(2) { // serve para pegar o segundo seletor nesse caso o segundo la de baixo do site das assinaturas
+                background-image: url(../images/fundo_combo_plus.png);
+                background-repeat: no-repeat; // a imagem estava se repetindo isso impede sua repetição
+                background-size: contain; //faz ocupar todo o tamanho do li no caso e preservandi a integridade da imagem
+            }
+
+            img {
+                height: 83px;
+            }
+
+            strong {
+                display: block;
+                margin-top: 24px;
+            }
+        }
+
+    }
+
+    p {
+        text-align: center;
+    }
+}

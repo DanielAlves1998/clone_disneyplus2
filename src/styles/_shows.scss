@@ -1,0 +1,47 @@
+@use 'variaveis';
+
+.shows {
+    padding: 2vw 5.6vw;
+    min-height: 50vw;
+
+    &__list {
+        margin-top: 44px;
+        display: none; // aqui ficou none pórque tem us display em baixo no &--is_active
+        grid-template-columns: 1fr 1fr 1fr; // serve para criar colunas nesse caso 3 colunas
+        gap: 24px;
+
+        &--is-active {
+            display: grid;
+        }
+
+
+        &__item {
+
+            img {
+                max-width: 100%; //tira a barra de rolagem
+                border-radius: 4px;
+            }
+        }
+    }
+
+    &__tabs {
+        display: flex;
+        justify-content: center;
+
+        &__button {
+            color: variaveis.$corTextoSecundario;
+            font-size: 20px;
+            border: none;
+            padding-bottom: 5px;
+            background: none;
+            text-transform: uppercase;
+            margin: 0 1vw;
+            cursor: pointer;
+            border-bottom: 5px solid transparent;
+
+            &--is-active {
+                border-color: variaveis.$corTextoSecundario;
+            }
+        }
+    }
+}
