@@ -3,6 +3,10 @@
 @use 'hero';
 @use 'shows';
 @use 'plans';
+@use 'available-devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
 
 // aqui é para impantar fontes
 @font-face {
@@ -22,6 +26,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: avenir, sans-serif;
+    list-style: none; //tira todos os balets de lista, no caso os pontos e a linha do link
+
 }
 
 
@@ -42,42 +48,148 @@ body {
 
 .text--big {
     @include text(18px);
+
+    @media (max-width: 768px) {
+        @include text(15px)
+    }
 }
 
 .text {
     @include text;
+
+    @media (max-width: 768px) {
+        @include text(14px)
+    }
 }
 
 .text--small {
     @include text(12px);
+
+    @media (max-width: 768px) {
+        @include text(11px)
+    }
 }
 
 .link-text {
     @include text(18px);
     color: variaveis.$corTextoSecundario;
+    text-decoration: underline
 }
 
 .title--big {
     @include title(44px);
+
+    @media (max-width: 768px) {
+        @include title(26px)
+    }
 }
 
 .title {
     @include title;
+
+    @media (max-width: 768px) {
+        @include title(24px)
+    }
 }
 
 .title--small {
     @include title(28px);
+
+    @media (max-width: 768px) {
+        @include title(22px)
+    }
 }
 
 .button {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 60px;
     font-size: 18px;
     color: variaveis.$corTextoSecundario;
-    background-color: #6421ff;
+    background-color: variaveis.$corDeFundoBotaoPrimario;
     text-transform: uppercase; // tarnsforma todas as letras em maiúsculas
     border-radius: 4px;
-    margin-top: 2vw;
-    margin-bottom: 8px;
+    text-decoration: none;// tira a decoração do botaõ no caso a quela linha que fica em baixo do link
+    padding: 8px 14px;
+    letter-spacing: 1px; //da um espaçamento entre todas as letras
+    border: 1px solid variaveis.$corDeFundoBotaoPrimario;
+
+    &:hover {
+        background-color: lighten(variaveis.$corDeFundoBotaoPrimario, 3%); //o 3% deixa é a porcentagem para deixar a cor mais clara
+    }
+
+    &--secondary {
+        background-color: variaveis.$corDeFundoBotaoSecundario;
+        border-color: variaveis.$corDeFundoBotaoSecundario;
+
+        &:hover {
+            background-color: lighten(variaveis.$corDeFundoBotaoSecundario, 3%);
+        }
+    }
+
+    &--dark {
+        background-color: rgba(variaveis.$corDeFundoBotaoDark, 0.8);
+        border-color: variaveis.$corTextoSecundario;
+
+        //faz com que qunado pesse o mause por cima ele mude de cor
+        &:hover {
+            background-color: variaveis.$corTextoSecundario;
+            color: variaveis.$corDeFundo;
+        }
+    }
+}
+
+.image-text-section {
+    padding: 5.6vw;
+    //os dois abaixo serve para adicionar duas colunas no caso o P vai ficar ao lado da imgem lá em baixo
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center; //para centralizar o P com a imagem
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+
+    //a imagem não respeitou o tamanho daq coluna então será aplicado o max-width na img em baixo
+
+    img {
+        max-width: 100%;
+    }
+
+    &__text_container {
+        padding: 2vw;
+
+        h2 {
+            margin-bottom: 24px;
+        }
+    }
+
+    &--image-full-width {
+        display: block;
+        position: relative; // serve para cegurar o texto na imagem do rei leão
+
+        img {
+            width: 100%;
+        }
+
+        &__text_container {
+            position: absolute; //é para colocar o texto por cima da imagem
+            top: 0; //serve para começar em cima po padding top
+            left: 50%; // joga o texto para o lado direito
+            height: 100%; //é para ocupar 100% da autura de todo o container
+            width: calc(50% - 5.6vw); //limita o paragrafo 
+            display: flex; //para alinahr os elemnetos na vertical 
+            flex-direction: column; // para direcioanr o efeito do flex a coluna e não a linha, pq por padrão é colocado um ao lado do outro
+            justify-content: center;
+
+            @media (max-width: 768px) {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        
+        }
+    }
 }

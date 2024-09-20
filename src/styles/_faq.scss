@@ -1,0 +1,55 @@
+.faq {
+    padding: 5.6vw;
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    &__questions {
+
+        &__item {
+            background-color: #13151d;
+            margin-bottom: 16px;
+
+            &__question {
+                color: #fff;
+                font-size: 20px;
+                padding: 24px;
+                display: block;
+                cursor: pointer;
+                position: relative;
+
+                &::after { //esse é um pseudo elemento para ficar la nas perguntas do final do site, com ele e o js da para abaixar e levantar a aba de perguntas
+                    content: '+';
+                    position: absolute;
+                    top: 0;
+                    right: 24px;
+                    height: 100%; //para ocupar 100% da autura do &__question
+                    display: flex;
+                    align-items: center;
+                    font-size: 40px;
+                }
+            }
+
+            &__answer { //é para qaundo estiver fechado
+                //tira a exibição da resposta
+                height: 0;
+                overflow: hidden;
+                padding: 0 24px; //aqui é pq adicionamos a animação la em baixo mas a pergunta estava abrindo jogando primeiro para a esquerda e isso não deixa com que aconteça
+                transition: height, .5s ease;
+            }
+
+            &--is-open { //é para qaundo estiver aberto
+                .faq__questions__item__question::after { //é para poder fechar
+                    content: '-';
+                }
+                .faq__questions__item__answer { //e tem que colocar também no html
+                    height: auto;
+                    padding-bottom: 24px;
+                    transition: height, .5s ease; //aqui é para quando a aba for aberta ela abrir mais suave
+                }
+            }
+        }
+    }
+}

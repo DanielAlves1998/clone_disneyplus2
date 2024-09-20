@@ -1,0 +1,67 @@
+@use 'variaveis';
+
+.header {
+    //é para deixar os botoês do header acompanhando a barra de rolagem 
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: variaveis.$corDeFundo;
+    transition: background-color .5 ease;
+    z-index: 1; //aqui colocamos uma opacidade porque quando passava pela foto do rei leão e cabeçalho sumia
+    
+
+    &--is-hidden {
+        background-color: transparent;
+        transition: background-color .5 ease;
+
+        .header {
+            &__logo, &__links__item:first-child { //aqui são duas em uma só 
+                opacity: 0;
+                visibility: hidden; //isso é pq tirei a opacidade do botão mas ele continua lá, e com isso ele some
+                transition: opacity .5 ease;
+            }
+        }
+    }
+
+
+    &__container {
+        padding: 8px 36px;
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 768px) {
+            padding: 0 12px 0 20px;
+        }
+    }
+
+    &__logo {
+        max-width: 80px;
+        width: 100%;
+        margin: 5px;
+        transition: opacity .5 ease;
+
+        @media (max-width: 768px) {
+            max-width: 64px;
+        }
+    }
+
+    &__links {
+        display: flex;
+
+        &__item {
+            margin: 5px;
+            transition: opacity .5 ease;
+        }
+    }
+
+    .button {
+        height: 50px;
+
+        @media (max-width: 768px) {
+            font-size: 13px;
+            padding: 8px 11px;
+            height: 40px;
+            letter-spacing: 0;
+        }
+    }
+}

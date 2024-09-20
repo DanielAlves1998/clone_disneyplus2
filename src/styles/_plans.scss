@@ -9,6 +9,14 @@
         display: flex;
         justify-content: space-around; // serve para distribuir as margens de uma forma padrão nos elementos
         margin-top: 50px;
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+
+        .button {
+            margin-top: 24px;
+        }
         
         &__item {
             text-align: center; //alinah o tento
