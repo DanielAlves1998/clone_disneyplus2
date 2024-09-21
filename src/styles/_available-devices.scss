@@ -12,8 +12,9 @@
         grid-template-columns: repeat(4, 1fr); //aqui é para repetir as colunas e nesse caso irá repetir 4x. 1fr significa 1 fração repeat
 
         @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+        }
 
-        }grid-template-columns: 1fr 1fr;
 
         &__item {
             text-align: center;
